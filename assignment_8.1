@@ -1,0 +1,37 @@
+import os
+
+
+def main():
+	dirName = input('Enter directory name: ')
+
+
+	if not os.path.exists(dirName):	#create specified directory if doesnt exist
+		os.mkdir(dirName)
+
+
+	fileName = input('Enter file name: ')
+
+
+	f = open(dirName+'/'+fileName, 'w')	
+
+
+	name, address,  phoneNumber = input('Enter Name, Address, and Phone Number separated by comma: ').split(',')	#input
+	f.write(name.strip() + ',' + address.strip() + ',' + phoneNumber.strip() + '\n')	#write content in to file
+	f.close()	#close file
+
+
+	f = open(dirName+'/'+fileName, 'r')	#open file in read mode
+
+
+	name, address,  phoneNumber = f.read().split(',')	#read contents from file
+
+
+	print('Output of file: ')
+	print('Name: ',name)
+	print('Address: ',address)
+	print('Phone no: ',phoneNumber)
+	f.close()	#close file
+
+
+if __name__ == '__main__':
+	main()
